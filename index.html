@@ -1,0 +1,314 @@
+<html>
+  <!-- ... or just email asah@ -->
+  <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="manifest" href="/static/site.webmanifest">
+    <style>
+      * {
+          box-sizing: border-box;
+	  margin: 0;
+	  font-family: "Oswald", "Lucida Console", "Courier New", monospace;
+      }
+
+      body {
+          margin: 0;
+          padding: 0;
+          background: url('/static/z-logo-dark.svg');
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          text-align: left;
+          margin-left: 5vw;
+          overscroll-behavior: none;
+	  padding-top: 5vh;
+      }
+      .fullscreen {
+	  width: 100%;
+	  height: 100vh;
+      }
+      .bottom-right {
+	  position: fixed;
+	  right: 10px;
+          bottom: 10px;
+          a,span {
+	      font-size:0.5em;
+              color:#ddd;
+          }
+      }
+      p#psecret {
+	  //      text-shadow: -1px 0 #d0e0e3, 0 1px #d0e0e3, 1px 0 #d0e0e3, 0 -1px #d0e0e3;
+	  color:d0e0e3;
+      }
+      form { max-width: 1024; width: 90%; }
+
+      button { border: 1px #999 solid; cursor:pointer; }
+      input { border: 1px #999 solid; margin-bottom: 30px }
+      .lbl { padding-right: 5px; color:white }
+      .head { font-size: 1.5em }
+      #name { width: 40vw; max-width: 380px }
+      #hcwh { height: 20vh }
+      textarea:focus, input:focus{ outline: none; }
+      textarea{ width:500px;height:150px;margin-bottom:10px }
+
+      @media only screen and (max-width: 1000px) {
+	  input,button,label { font-size: xxx-large /* 1.0em */ }
+	  p { font-size: xxx-large /* 2.5em */ }
+	  input { width: 75% }
+          div.light { max-width: 90%; font-size: xxx-large /* 22px */;  }
+          div#headshot_div { margin-top: 20px }
+      }
+      
+      @media only screen and (min-width: 1001px) {
+	  button,label,p { font-size: xxx-large /* 1.25em */ }
+	  input { font-size: xxx-large /* 0.9em */ }
+	  input { width: 300px }
+	  div.light { max-width: 900px; font-size: x-large /* 22px */;  }
+	  table { max-width: 900px; }
+      }
+      #bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          z-index: -1;
+          opacity: 0;
+          background: url('/static/sw-nologo-bg.svg');
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+      }
+      div.light {
+          color:#999;
+      }
+      a.light {
+          color:#999;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="bg"></div>
+
+    <div class="fullscreen">
+
+      <table>
+	<tr>
+	  <td><a class="light" href="https://www.linkedin.com/in/adamsah/"><img height="80" id="zlogo" src="/static/z.svg"></a></td>
+	  <td style="width:90%" >
+	    <p id="psecret"><span style="padding-left: 10px" id="secret">authenticity ≃ success ≃ inspiration</span></p>
+	  </td>
+	</tr>
+      </table>
+      <br>
+    <div id="psecret-expl" class="light">
+      Inspiration is unlocked when success is the norm.<br/>&nbsp;<br/>
+      
+      Zero Capital (Fund I) plans to back 36 pre-seed companies with $10M and have over a third of them win.
+      Zero Capital is funded by a small, diverse group who share these values, including successful founders, nerds and OG investors.
+      <br/>&nbsp;<br/>
+      
+      Zero refers to "zero-to-one" and the aspiration to add value beyond capital.
+      We operate with authenticity, transparency and positive reputation.
+      We seek inspiration and joy as a deeper goal (and it's a nice signal for superlative execution).
+      The ≃ symbol refers to <a class="light" href="https://chatgpt.com/share/6739e351-0f00-8007-b157-5dea43a14867">interconnection of these values</a>.
+      <br/>&nbsp;<br/>
+
+      <div id="bio" style="padding-left: 10px" class="light">
+	<div id="headshot_div" style="float:left; margin-right:20px">
+	  <a class="light" href="https://www.linkedin.com/in/adamsah/"><img height="100" id="headshot" src="/static/asah-headshot.jpg"></a>
+	</div>
+	Zero Capital is founded by <a class="light" href="https://www.linkedin.com/in/adamsah/">Adam Sah</a> (25 patents, early@Google, 3 IPOs, 6 winners as angel investor)
+	and the fund pays respect to Adam's father, mathematician <a class="light" href="https://www.google.com/search?q=Chih-Han+Sah">Chih-Han Sah</a>,
+	who studied interconnections and transformations.
+      </div>
+      <br/>
+
+      <a href="#" class="light" id="learnmore">learn more</a>
+    </div>
+    <form style="display:none" id="contact-form" name="contact-form" method="POST" action="success">
+      <p>
+	<label><span class="lbl">Your name</span> <input id="name" type="text" name="name" /></label>
+      </p>
+      <p>
+	<label><span class="lbl">How to contact you</span> <input id="contact" name="contact" /></label>
+      </p>
+      <p>
+	<label><span class="lbl">How can we help</span> <br/> <textarea id="hcwh" name="how_can_we_help" /></textarea></label><br>
+	<span class="lbl">startups: please include a link to pitchdeck</span>
+	<label id='hcwh_err' style="display:none;color:white"><span>to reduce spam, 40 characters minimum please.<p>&nbsp;</span></label><br>
+      </p>
+      <p>
+	<label><span class="lbl">Startup CAPTCHA: what fundraising instrument has largely replaced the convertible note? (<a href="https://www.google.com/search?q=what+fundraising+instrument+replaced+the+convertible+note">ask google</a>)</span> <br/> <input id="cap" name="cap" /></label><br>
+      </p>
+      <p>
+	<button type="submit">Submit</button>
+      </p>
+    </form>
+
+    <div style="margin-top:2vh; font-size: 10px">
+This document is not an offer to sell securities of any investment fund or a solicitation of offers to buy any such securities. Securities of the Fund are offered to investors only by means of complete offering materials, which contain significant additional information about the terms and risks of an investment in the Fund and shall supersede the information contained herein in its entirety. Securities of the Fund are not registered with any regulatory authority, are offered pursuant to exemptions from such registration and are subject to significant restrictions. <br/>
+‍
+The information in this document is believed by the General Partner to be reliable and has been obtained from public sources believed to be reliable. The General Partner makes no representation or warranty, express or implied, as to the fairness, accuracy, completeness or correctness of such information, nor does the General Partner or any of its affiliates accept any liability arising from its use. Opinions, estimates and projections in this document constitute the current judgment of the General Partner and are subject to change without notice. The General Partner has no obligation to update, modify or amend this document or to otherwise notify a recipient of this document in the event that any matter stated herein, or any opinion, projection, forecast or estimate set forth herein, changes or subsequently becomes inaccurate. No person has been authorized to give any information or make any representations not contained herein.<br/>
+‍
+      Investment in the Fund involves significant risks of loss of capital.  There is no assurance that the Fund will achieve its investment objective and an investor could lose all or a substantial portion of his/her/its investment in the Fund.  An investor should carefully review the Fund's offering materials and consult with the appropriate financial, tax or legal adviser before investing in the Fund. The risks disclosed in this document do not include all of the risks and other significant considerations of an investment in the Fund.<br/>
+      <br/>&nbsp;<br/>
+    </div>
+
+    </div>
+
+    <div class="bottom-right">
+      <a href="/privacy-policy.html" class="privacy-policy-link">privacy</a>
+      &nbsp;&nbsp;
+      <a href="/login">login</a>
+    </div>
+    
+    <script>
+      function resize_headshot() {
+      console.log("resize_headshot()");
+      if (document.querySelector('img#headshot').complete) {
+          var img_height = $("img#headshot").height();
+          var img_width = $("img#headshot").width();
+          var bio_height = Math.min(300, $("div#bio").height());
+          $("img#headshot").css({
+            'height': bio_height + "px", 'width': (bio_height/img_height * img_width)+"px"
+          });
+      } else {
+          console.log("headshot not loaded. waiting 100ms");
+          setTimeout(resize_headshot, 100);
+      }
+}
+
+      function resize_logo() {
+          console.log("resize_logo()");
+          if (document.querySelector('img#zlogo').complete) {
+              var img_height = $("img#zlogo").height();
+              var img_width = $("img#zlogo").width();
+              var win_width = Math.min(1024, $(window).width());
+              var new_width = win_width * 0.075;
+              $("img#zlogo").css({
+                'width': new_width + "px", 'height': (new_width/img_width * img_height)+"px"
+              });
+          var font_size = win_width * 0.055;
+              $("p#psecret").css({
+             	  'font-size': font_size + "px"
+              });
+          } else {
+              console.log("logo not loaded. waiting 100ms");
+              setTimeout(resize_logo, 100);
+          }
+      }
+
+        // scale font to viewport size - was too small otherwise
+      function resize_body_text() {
+              var win_width = Math.min(1024, $(window).width());
+	let size = win_width * 0.05;
+        $('div#psecret-expl,div#bio').css('font-size', size + 'px');
+      }
+
+    $(document).ready(function(){
+	function reveal() {
+	    $("#psecret-expl").hide(600, function() {
+//		$("body").css("background-image", "url('/static/sw-nologo-bg.svg')");
+		$("#contact-form").fadeIn(500, function() {
+		    $("#name").focus();
+		});
+	    });
+	};
+	
+	window.addEventListener('resize', () => {
+console.log('resize   headshot loaded: '+ document.querySelector('img#headshot').complete);
+	    // We execute the same script as before
+	    let vh = window.innerHeight * 0.01;
+	    document.documentElement.style.setProperty('--vh', '${vh}px');
+	    let vw = window.innerWidth * 0.01;
+	    document.documentElement.style.setProperty('--vw', '${vw}px');
+      resize_headshot();
+      resize_logo();
+      resize_body_text();
+	});
+
+        // check for blanks to avoid spam
+	$("#contact-form").submit(function(e){
+	    var isValid = true;
+	    
+	    var inputs = $(this).find('input');
+	    for (var i = 0; i < inputs.length; i++) {
+		if ($(inputs[i]).val() === "") {
+		    $(inputs[i]).css('border', '1px solid red');
+		    isValid = false;
+		} else {
+		    $(inputs[i]).css('border', '');
+		}
+	    }
+	    var textareas = $(this).find('textarea');
+	    for (var i = 0; i < textareas.length; i++) {
+		if ($(textareas[i]).is('textarea') && $(textareas[i]).val().length < 40) {
+		    $(textareas[i]).css('border', '1px solid red');
+		    isValid = false;
+		    $("#hcwh_err").slideDown(600);
+		} else {
+		    $(textareas[i]).css('border', '');
+		}
+	    }	    
+	    if (!isValid) {
+		e.preventDefault();
+	    }
+	});
+
+	// adwords
+	$.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results ? results[1] : null;
+	};
+	if($.urlParam('s') === "aw") {
+	    $("#secret").hide();
+            $("#bg").css('opacity', 1);
+	    $("#contact-form").css("padding", 0).show();
+	    $("body").css("margin", "20px");
+	    return;
+	}
+
+	// reveal on mouseover, click or swipe
+	$("a#learnmore").click(reveal);
+
+	// overstretch background past viewport
+	var img = new Image();
+        img.src = window.getComputedStyle(document.body, null).getPropertyValue('background-image').replace(/url\(["']?/, '').replace(/["']?\)$/, '');
+
+	img.onload = function() {
+	    let originalWidth = this.width;
+	    let originalHeight = this.height;
+	    $(window).on('resize', function() {
+		let imgAspect = originalWidth / originalHeight;
+		let windowAspect = window.innerWidth / window.innerHeight;
+		
+		if (imgAspect > windowAspect) {
+		    let newHeight = window.innerHeight * 1;
+		    let newWidth = newHeight * imgAspect;
+		    $('body').css({
+			'background-size': newWidth+"px "+newHeight+"px"
+		    });
+		} else {
+		    let newWidth = window.innerWidth * 1;
+		    let newHeight = newWidth / imgAspect;
+		    $('body').css({
+			'background-size': newWidth+"px "+newHeight+"px"
+		    });
+                }
+resize_headshot();
+resize_logo();
+resize_body_text();
+	    }).trigger('resize');
+      };
+      document.getElementById("headshot").onload = resize_headshot;
+      setTimeout(resize_headshot, 500);
+    });
+    </script>
+  </body>
+</html>
